@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "jobmatchflow": {
+      "command": "jobmatchflow-mcp",
+      "args": []
+    }
+  }
+}

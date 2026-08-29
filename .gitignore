@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# Original Chinese drafts, superseded by docs/*.md (English)
+JobMatchFlow_ClaudeCode_用户全流程.md
+JobMatchFlow_Codex_用户全流程.md

@@ -1,0 +1,47 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.55cm]{geometry}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{needspace}
+\usepackage{titlesec}
+
+\setmainfont{TeX Gyre Heros}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.25em,itemsep=2pt,topsep=2pt}
+\titleformat{\section}{\large\bfseries}{}{0pt}{}[\vspace{-0.35em}\hrule]
+\titlespacing*{\section}{0pt}{0.8em}{0.45em}
+
+\begin{document}
+{\LARGE\bfseries Candidate Name}\\[3pt]
+City, Country \quad | \quad +00 000 000000 \quad | \quad
+\href{mailto:candidate@example.com}{candidate@example.com} \quad | \quad
+\href{https://example.com}{example.com}
+
+\section*{Profile}
+Evidence-grounded professional summary tailored to the target role.
+
+\section*{Experience}
+\needspace{5\baselineskip}
+\textbf{Role Title} \hfill 2023--Present\\
+Company Name, City
+\begin{itemize}
+  \item Delivered a verified result with clear scope and evidence.
+  \item Applied a relevant skill without overstating direct experience.
+\end{itemize}
+
+\needspace{4\baselineskip}
+\textbf{Earlier Role} \hfill 2020--2023\\
+Earlier Company, City
+\begin{itemize}
+  \item Improved a measurable process using a verified method.
+\end{itemize}
+
+\section*{Education}
+\textbf{Degree or Qualification} \hfill 2020\\
+Institution Name
+
+\section*{Skills}
+Skill group: verified skill, verified tool, verified domain knowledge
+\end{document}
