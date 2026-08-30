@@ -278,6 +278,12 @@ If the user wants to complete this continuously within the same task, it can als
 
 `$jobmatchflow-tailor` first checks the shared LaTeX environment. When the environment is already usable, it reuses it directly; only when the check fails does it move into `$jobmatchflow-materials-setup` — there is no need to manually reconfigure it for every job.
 
+### Optional: A Faster Path for a Quick Pass
+
+`$jobmatchflow-apply-fast` is a leaner sibling of `$jobmatchflow-apply` for when the user just wants to get through one job, or a handful, quickly — it is not a replacement for the standard entry point. It picks one resume for the whole pass instead of re-deliberating per job, uploads that resume first on any ATS that can parse and autofill from it, drafts and self-reviews the Cover Letter inline instead of dispatching a separate reviewer, and still stops before the final submit button unless direct submission is already on. LinkedIn Easy Apply routing (official posting first, verified email before or alongside Easy Apply) is not shortened in this path.
+
+> Use $jobmatchflow-apply-fast with my resume #2 for this pass. Process these three Preparing jobs; stop before the final submit button on each.
+
 ## 8. First Test Submission
 
 For the first test, it is recommended to process only one job and stop before submission.
@@ -525,6 +531,7 @@ This is not a 24-hour monitoring task. Codex only works when the user actively o
 | --- | --- | --- | --- |
 | `$jobmatchflow-rank` | Want to filter the Job List or add suitable jobs to Preparing | First asks a series of questions about job-search preferences; afterward confirms preferences first; filters using App score, full JD, and match details | Confirmed preferences saved to Experience Agent Q&A; Preparing modified when the user asks |
 | `$jobmatchflow-apply` | Configuration check, syncing email, filling out an ATS, submitting via company site/email/Easy Apply | Chooses existing or tailored materials, operates Chrome, updates the Application after submission | Cover Letter, submission status, complete submission record, original company-site link, email and recruiting feedback written to the App |
+| `$jobmatchflow-apply-fast` | A quick one-job or small-batch pass once setup is already done | Same as `apply`, but with one resume for the whole pass, ATS resume-parse autofill first, and an inline self-reviewed Cover Letter instead of a dispatched reviewer | Same write-back as `apply`; still stops before the final submit button |
 | `$jobmatchflow-tailor` | The user explicitly requests a tailored resume or tailored materials | Generates, reviews, renders, and uploads a tailored CV and tailored Cover Letter for one job at the same time | Both final PDFs uploaded to that Job; not responsible for submitting the application |
 | `$jobmatchflow-materials-setup` | First-time setup of the tailored materials environment, or when the LaTeX doctor check fails | Installs/repairs and validates the shared LaTeX environment | Only saves the local machine's user-level LaTeX state and templates; does not modify JobMatchFlow data |
 | `$jobmatchflow-insights` | Want to analyze the application funnel, conversion rate, job strategy, or outcome feedback | Reads existing Jobs, Applications, scores, stages, and Notes to perform analysis | Read-only by default; does not modify the App |
@@ -535,10 +542,11 @@ Common combinations:
 ```text
 Filter jobs: rank
 → Standard submission: apply
-→ Tailored submission: tailor → apply
+→ Quick pass through a few jobs: apply-fast
+→ Tailored submission: tailor → apply (or tailor → apply-fast)
 → LaTeX issue: materials-setup → tailor
 → Got an interview: interview
 → Review after a while: insights
 ```
 
-`rank`, `tailor`, `insights`, and `interview` are all extra functions called individually as needed. The main entry point for standard submissions is always `$jobmatchflow-apply`.
+`rank`, `tailor`, `insights`, and `interview` are all extra functions called individually as needed. The main entry point for standard submissions is `$jobmatchflow-apply`; reach for `$jobmatchflow-apply-fast` only when the user explicitly wants a quicker pass through one or a few jobs.

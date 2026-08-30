@@ -308,6 +308,12 @@ If the user wants to complete both steps in one continuous task, they can also s
 
 `jobmatchflow-tailor` will first check the shared LaTeX environment. When the environment is already usable, it reuses it directly; only when the check fails does it move on to `/jobmatchflow:jobmatchflow-materials-setup` — there's no need to manually reconfigure it for every job.
 
+### Optional: A Faster Path for a Quick Pass
+
+`/jobmatchflow:jobmatchflow-apply-fast` is a leaner sibling of `jobmatchflow-apply` for when the user just wants to get through one job, or a handful, quickly — it is not a replacement for the standard entry point. It picks one resume for the whole pass instead of re-deliberating per job, uploads that resume first on any ATS that can parse and autofill from it, drafts and self-reviews the Cover Letter inline instead of dispatching a separate reviewer, and still stops before the final submit button unless direct submission is already on. LinkedIn Easy Apply routing (official posting first, verified email before or alongside Easy Apply) is not shortened in this path.
+
+> /jobmatchflow:jobmatchflow-apply-fast Use my resume #2 for this pass. Process these three Preparing jobs; stop before the final submit button on each.
+
 ## 8. First Trial Submission
 
 For the first time, it's recommended to process only a single job and stop before the final submission.
@@ -529,6 +535,7 @@ This is not a 24-hour monitoring task. Claude Code only works when the user acti
 | --- | --- | --- | --- |
 | `/jobmatchflow:jobmatchflow-rank` | To filter the Job List or add suitable jobs to Preparing | First time: multi-round questions about job-search preferences; afterward: confirm preferences first, then filter using App scores, the full JD, and match details | Confirmed preferences are saved to Experience Agent Q&A; Preparing is modified when the user requests it |
 | `/jobmatchflow:jobmatchflow-apply` | Configuration checks, syncing the inbox, filling out the ATS, applying via company site/email/Easy Apply | Selects existing or tailored materials, operates Chrome, updates the Application after submission | Cover Letter, application status, complete submission records, original company link, and email/recruiting feedback are written to the App |
+| `/jobmatchflow:jobmatchflow-apply-fast` | A quick one-job or small-batch pass once setup is already done | Same as `apply`, but with one resume for the whole pass, ATS resume-parse autofill first, and an inline self-reviewed Cover Letter instead of a dispatched reviewer | Same write-back as `apply`; still stops before the final submit button |
 | `/jobmatchflow:jobmatchflow-tailor` | The user explicitly requests a tailored resume or tailored materials | Generates, reviews, renders, and uploads a tailored CV and a tailored Cover Letter for one job at the same time | Both final PDFs are uploaded to that Job; not responsible for submitting the application |
 | `/jobmatchflow:jobmatchflow-materials-setup` | First-time setup of the tailored-materials environment, or when the LaTeX doctor check fails | Installs/repairs and validates the shared LaTeX environment | Only saves local machine/user-level LaTeX state and templates; does not modify JobMatchFlow data |
 | `/jobmatchflow:jobmatchflow-insights` | To analyze the application funnel, conversion rate, job strategy, or outcome feedback | Reads existing Jobs, Applications, scores, stages, and Notes to perform analysis | Read-only by default; does not modify the App |
@@ -539,10 +546,11 @@ Common combinations:
 ```text
 Filter jobs: rank
 → Standard application: apply
-→ Tailored application: tailor → apply
+→ Quick pass through a few jobs: apply-fast
+→ Tailored application: tailor → apply (or tailor → apply-fast)
 → LaTeX issue: materials-setup → tailor
 → Got an interview: interview
 → Reviewing progress later: insights
 ```
 
-`rank`, `tailor`, `insights`, and `interview` are all additional features invoked separately whenever the user needs them. The main entry point for standard applications is always `/jobmatchflow:jobmatchflow-apply`.
+`rank`, `tailor`, `insights`, and `interview` are all additional features invoked separately whenever the user needs them. The main entry point for standard applications is `/jobmatchflow:jobmatchflow-apply`; reach for `/jobmatchflow:jobmatchflow-apply-fast` only when the user explicitly wants a quicker pass through one or a few jobs.
