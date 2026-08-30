@@ -12,6 +12,7 @@ JobMatchFlow stays the single source of truth for your profile, resumes, jobs, s
 | `jobmatchflow-apply` | Runs application sessions: setup checks, inbox sync, ATS/email submission, and reconciling outcomes — using JobMatchFlow's MCP data and your visible Chrome. |
 | `jobmatchflow-apply-fast` | Leaner sibling of `jobmatchflow-apply` for a quick one-job or small-batch pass: picks one resume for the whole pulse, leans on ATS resume-parse autofill, drafts and self-reviews the cover letter inline instead of dispatching a reviewer, and still stops before the final submit. |
 | `jobmatchflow-tailor` | Produces a truthful, tailored CV and cover letter for one job, with multi-stage review, local LaTeX rendering, verification, and upload back to JobMatchFlow. |
+| `jobmatchflow-cover-letter-fast` | Just need a Cover Letter, not a full application? Generates one truthful, job-specific Cover Letter as a local Word file in one fast pass, and uploads it to JobMatchFlow only on request. |
 | `jobmatchflow-materials-setup` | Checks, installs, or repairs the shared local LaTeX toolchain that tailored-materials rendering depends on. |
 | `jobmatchflow-insights` | Read-only analysis of your application funnel, stage timing, targeting patterns, and outcomes from existing JobMatchFlow data. |
 | `jobmatchflow-interview` | Prepares you for an interview from the exact snapshot JobMatchFlow submitted — the real resume, cover letter, and notes the employer received. |

@@ -536,6 +536,7 @@ This is not a 24-hour monitoring task. Claude Code only works when the user acti
 | `/jobmatchflow:jobmatchflow-rank` | To filter the Job List or add suitable jobs to Preparing | First time: multi-round questions about job-search preferences; afterward: confirm preferences first, then filter using App scores, the full JD, and match details | Confirmed preferences are saved to Experience Agent Q&A; Preparing is modified when the user requests it |
 | `/jobmatchflow:jobmatchflow-apply` | Configuration checks, syncing the inbox, filling out the ATS, applying via company site/email/Easy Apply | Selects existing or tailored materials, operates Chrome, updates the Application after submission | Cover Letter, application status, complete submission records, original company link, and email/recruiting feedback are written to the App |
 | `/jobmatchflow:jobmatchflow-apply-fast` | A quick one-job or small-batch pass once setup is already done | Same as `apply`, but with one resume for the whole pass, ATS resume-parse autofill first, and an inline self-reviewed Cover Letter instead of a dispatched reviewer | Same write-back as `apply`; still stops before the final submit button |
+| `/jobmatchflow:jobmatchflow-cover-letter-fast` | Just want a Cover Letter, not a full application | Drafts and self-reviews one job-specific Cover Letter inline, renders a verified local DOCX, uploads to JobMatchFlow only on request | Nothing until the user asks to save it; no resume choice, no ATS, no browser |
 | `/jobmatchflow:jobmatchflow-tailor` | The user explicitly requests a tailored resume or tailored materials | Generates, reviews, renders, and uploads a tailored CV and a tailored Cover Letter for one job at the same time | Both final PDFs are uploaded to that Job; not responsible for submitting the application |
 | `/jobmatchflow:jobmatchflow-materials-setup` | First-time setup of the tailored-materials environment, or when the LaTeX doctor check fails | Installs/repairs and validates the shared LaTeX environment | Only saves local machine/user-level LaTeX state and templates; does not modify JobMatchFlow data |
 | `/jobmatchflow:jobmatchflow-insights` | To analyze the application funnel, conversion rate, job strategy, or outcome feedback | Reads existing Jobs, Applications, scores, stages, and Notes to perform analysis | Read-only by default; does not modify the App |
@@ -547,6 +548,7 @@ Common combinations:
 Filter jobs: rank
 → Standard application: apply
 → Quick pass through a few jobs: apply-fast
+→ Just need a Cover Letter: cover-letter-fast
 → Tailored application: tailor → apply (or tailor → apply-fast)
 → LaTeX issue: materials-setup → tailor
 → Got an interview: interview
